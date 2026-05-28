@@ -1,0 +1,40 @@
+# Configuration file for Synapse.
+#
+# This is a YAML file: see [1] for a quick introduction. Note in particular
+# that *indentation is important*: all the elements of a list or dictionary
+# should have the same indentation.
+#
+# [1] https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html
+#
+# For more information on how to configure Synapse, including a complete accounting of
+# each option, go to docs/usage/configuration/config_documentation.md or
+# https://element-hq.github.io/synapse/latest/usage/configuration/config_documentation.html
+server_name: "localhost"
+pid_file: /data/homeserver.pid
+listeners:
+  - port: 8008
+    resources:
+    - compress: false
+      names:
+      - client
+      - federation
+    tls: false
+    type: http
+    x_forwarded: true
+database:
+  name: sqlite3
+  args:
+    database: /data/homeserver.db
+log_config: "/data/localhost.log.config"
+media_store_path: /data/media_store
+registration_shared_secret: "Y@2n*cO25ts-=#suLuii513liJsTcB#1^fwGlZjVwKlyz_B&.&"
+report_stats: false
+macaroon_secret_key: "i4&Cn51ppN~=CAJtody15TTj7=HS,Xr~t33QMzl;z53aAxK0qj"
+form_secret: "7WsdQ2G_W.is;L3jGGFUY-ae1ReCjXfetiUigA*bZ7gHEcuhf1"
+signing_key_path: "/data/localhost.signing.key"
+trusted_key_servers:
+  - server_name: "matrix.org"
+
+enable_registration: true
+enable_registration_without_verification: true
+# vim:ft=yaml

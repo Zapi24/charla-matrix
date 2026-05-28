@@ -1,0 +1,12 @@
+services:
+  synapse:
+    image: matrixdotorg/synapse:latest
+    ports:
+      - "8008:8008"
+    volumes:
+      - "./data:/data"
+
+  element:
+    image: vectorim/element-web:latest
+    ports:
+      - "8080:80"
